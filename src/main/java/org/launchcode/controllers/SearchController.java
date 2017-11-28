@@ -37,10 +37,15 @@ public class SearchController {
         if (searchType.equals("all")){
             jobs = JobData.findByValue(searchTerm);
 
+
         }else{
             jobs = JobData.findByColumnAndValue(searchType, searchTerm);
+
         }
+        String jobSize = jobs.size() + " Results";
         model.addAttribute("jobs", jobs);
+        model.addAttribute("jobSize", jobSize);
+
 
         return "search";
     }
